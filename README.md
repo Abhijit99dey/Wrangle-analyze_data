@@ -1,84 +1,58 @@
-# Wrangle and Analyze Data 
-by Abhijit Dey
+# Wrangle and Analyze Data
+Udacity Data Analyst December 2017 - May 2018. 
 
+Project 7: Wrangle and Analyze Data - WeRateDogs twitter account
 
+[Click to preview report](https://cdn.rawgit.com/latinacode/Wrangle-and-Analyze-Data/f3a9b664/act_report.pdf)
 
-# Introduction
+# Project Overview
+## Introduction
+The dataset that I will be wrangling (and analyzing and visualizing) is the tweet archive of Twitter user @dog_rates, also known as WeRateDogs. WeRateDogs is a Twitter account that rates people's dogs with a humorous comment about the dog. These ratings almost always have a denominator of 10. The numerators, though? Almost always greater than 10. 11/10, 12/10, 13/10, etc. Why? Because "they're good dogs Brent." WeRateDogs has over 6 million followers and has received international media coverage.
 
-This project focused on wrangling data from the WeRateDogs Twitter account using Python, documented in a Jupyter Notebook (wrangle_act.ipynb). This Twitter account rates dogs with humorous commentary. The rating denominator is usually 10, however, the numerators are usually greater than 10.
-[They’re Good Dogs Brent](http://knowyourmeme.com/memes/theyre-good-dogs-brent)
-wrangle WeRateDogs Twitter data to create interesting and trustworthy analyses and visualizations. WeRateDogs has over 4 million followers and has received international media coverage.
+WeRateDogs downloaded their Twitter archive and sent it to Udacity via email exclusively to use in this project. This archive contains basic tweet data (tweet ID, timestamp, text, etc.) for all 5000+ of their tweets as they stood on August 1, 2017. 
 
-WeRateDogs downloaded their Twitter archive and sent it to Udacity via email exclusively for us to use in this project. This archive contains basic tweet data (tweet ID, timestamp, text, etc.) for all 5000+ of their tweets as they stood on August 1, 2017
+## What Software Do I Need?
 
-## The Data
+- You need to be able to work in a Jupyter Notebook on your computer. P
+- The following packages (libraries) need to be installed. You can install these packages via conda or pip. Please revisit our Anaconda tutorial earlier in the Nanodegree program for package installation instructions.
+   - pandas
+  - NumPy
+  - requests
+  - tweepy
+  - json
 
-### Enhanced Twitter Archive
+- You need to be able to create written documents that contain images and you need to be able to export these documents as PDF files. 
 
-The WeRateDogs Twitter archive contains basic tweet data for all 5000+ of their tweets, but not everything. One column the archive does contain though: each tweet's text, which I used to extract rating, dog name, and dog "stage" (i.e. doggo, floofer, pupper, and puppo) to make this Twitter archive "enhanced.".We manually downloaded this file manually by clicking the following link: [twitter_archive_enhanced.csv](https://d17h27t6h515a5.cloudfront.net/topher/2017/August/59a4e958_twitter-archive-enhanced/twitter-archive-enhanced.csv)
+# Project Specifications
+## Code Functionality and Readability
+- All project code is contained in a Jupyter Notebook named wrangle_act.ipynb and runs without errors.
+- The Jupyter Notebook has an intuitive, easy-to-follow logical structure. The code uses comments effectively and is interspersed with Jupyter Notebook Markdown cells. The steps of the data wrangling process (i.e. gather, assess, and clean) are clearly identified with comments or Markdown cells, as well.
 
-### Additional Data via the Twitter API
+## Gathering Data
+Data is successfully gathered:
+- From at least the three (3) different sources on the Project Details page.
+- In at least the three (3) different file formats on the Project Details page.
 
-Back to the basic-ness of Twitter archives: retweet count and favorite count are two of the notable column omissions. Fortunately, this additional data can be gathered by anyone from Twitter's API. Well, "anyone" who has access to data for the 3000 most recent tweets, at least. But we, because we have the WeRateDogs Twitter archive and specifically the tweet IDs within it, can gather this data for all 5000+. And guess what? We're going to query Twitter's API to gather this valuable data.
+Each piece of data is imported into a separate pandas DataFrame at first.
 
-### Image Predictions File
+## Assessing Data
+1. Two types of assessment are used:
+   - Visual assessment: each piece of gathered data is displayed in the Jupyter Notebook for visual assessment purposes. Once displayed, data can additionally be assessed in an external application (e.g. Excel, text editor).
+   - Programmatic assessment: pandas' functions and/or methods are used to assess the data.
+2. At least eight (8) data quality issues and two (2) tidiness issues are detected, and include the issues to clean to satisfy the Project Motivation. Each issue is documented in one to a few sentences each.
 
-he tweet image predictions, i.e., what breed of dog (or other object, animal, etc.) is present in each tweet according to a neural network. This file (image_predictions.tsv) hosted on Udacity's servers and we downloaded it programmatically using python Requests library on the following (URL of the file: https://d17h27t6h515a5.cloudfront.net/topher/2017/August/599fd2ad_image-predictions/image-predictions.tsv)
+## Cleaning Data
+- The define, code, and test steps of the cleaning process are clearly documented.
+- Copies of the original pieces of data are made prior to cleaning.
+- All issues identified in the assess phase are successfully cleaned using Python and pandas.
+- A tidy master dataset with all pieces of gathered data is created.
 
-## Key Points
+## Storing and Acting on Wrangled Data
+- Save master dataset to a CSV file.
+- The master dataset is analyzed using pandas in the Jupyter Notebook and at least three (3) separate insights are produced.
+- At least one (1) labeled visualization is produced in the Jupyter Notebook using Python’s plotting libraries.
 
-Key points to keep in mind when data wrangling for this project:
-
-* We only want original ratings (no retweets) that have images. Though there are 5000+ tweets in the dataset, not all are dog ratings and some are retweets.
-
-* Fully assessing and cleaning the entire dataset requires exceptional effort so only a subset of its issues (eight (8) quality issues and two (2) tidiness issues at minimum) need to be assessed and cleaned.
-
-* Cleaning includes merging individual pieces of data according to the rules of tidy data.
-
-* The fact that the rating numerators are greater than the denominators does not need to be cleaned. This unique rating system is a big part of the popularity of WeRateDogs.
-
-* We do not need to gather the tweets beyond August 1st, 2017. We can, but note that we won't be able to gather the image predictions for these tweets since we don't have access to the algorithm used.
-
-# Project Details
-
-Fully assessing and cleaning the entire dataset would require exceptional effort so only a subset of its issues (eight quality issues and two tidiness issues at minimum) needed to be assessed and cleaned.
-
-The tasks for this project were:
-
-* Data wrangling, which consists of:
-  * Gathering data
-  * Assessing data
-  * Cleaning data
-* Storing, analyzing, and visualizing our wrangled data
-* Reporting on 1) our data wrangling efforts and 2) our data analyses and visualizations
-
-## Installing
-
-* Install Jupyter Notebook to run `wrangle_act.ipynb`.
-* Need consumer_key, consumer_secret, access_token, access_secret to query from Twitter API.
-* Require the following libraries installed.
-
-* numpy
-* pandas
-* requests
-* tweepy
-* json
-* matplotlib.pyplot
-
-## Files
-
-* `act_report`: Communicates the insights and displays the Visualizations produced from the wrangled data.
-* `./Data/image_prediction.tsv`: Data downloaded using Requests library and URL.
-* `./Data/tweet_json.txt`: Data gathered from twitter API.
-* `./Data/twitter-archive-enhanced.csv`: File downloaded from Udacity.
-* `./Data/twitter_archive_master.csv`: The clean DataFrame 1.
-* `./Data/twitter_image_predictions.csv`: The clean DataFrame 2.
-* `wrangle_act.ipynb`: The main file containing all the gathering, wrangling and analyzing work.
-* `wrangle_report`: Briefly describes my wrangling efforts.
-
-(Check the wrangling [here](http://htmlpreview.github.io/?https://github.com/abodacs/Wrangle-and-Analyze-Data-DAND-project/blob/master/wrangle_report.html) and the visualization [here](http://htmlpreview.github.io/?https://github.com/abodacs/Wrangle-and-Analyze-Data-DAND-project/blob/master/act_report.html))
-
-## Resources
-
-* Twitter API
-* Files downloaded from Udacity
+## Report
+Two reports:
+- Wwrangling efforts are briefly described in wrangle_report.pdf.
+- The three (3) or more insights the student found are communicated in act_report.pdf including visualization.
